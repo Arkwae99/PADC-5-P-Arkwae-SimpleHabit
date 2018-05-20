@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SimpleHabit</string>
+    <string name="action_settings">Settings</string>
+    <string name="starthere">Start Here</string>
+</resources>
