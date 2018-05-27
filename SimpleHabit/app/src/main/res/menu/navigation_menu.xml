@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_meditate"
+        android:icon="@drawable/ic_play_circle_outline_black_24dp"
+        android:iconTint="@color/white_full"
+        android:title="Meditate" />
+    <item
+        android:id="@+id/item_me"
+        android:icon="@drawable/ic_android_black_24dp"
+        android:iconTint="@color/white_full"
+        android:title="Me" />
+    <item
+        android:id="@+id/item_more"
+        android:icon="@drawable/ic_more_horiz_black_24dp"
+        android:iconTint="@color/white_full"
+        android:title="More" />
+
+
+</menu>

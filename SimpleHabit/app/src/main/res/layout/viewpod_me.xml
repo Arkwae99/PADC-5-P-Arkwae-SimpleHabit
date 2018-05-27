@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.padcmyanmar.simplehabit.viewpod.Viewpod_Me xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:titleTextColor="@color/white_full">
+
+        </android.support.v7.widget.Toolbar>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_xxxlarge">
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/tv_streak"
+            android:text="Progress"
+            android:textColor="@color/white_full"
+            android:textSize="@dimen/text_regular_3x" />
+
+
+        <TextView
+            android:id="@+id/tv_streak_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/cardView"
+            android:layout_alignEnd="@+id/tv_progress"
+            android:layout_marginEnd="16dp"
+            android:drawableLeft="@drawable/ic_star_yellow_24dp"
+            android:text="1"
+            android:textAlignment="center"
+            android:textColor="#49e4c8"
+            android:textSize="@dimen/text_heading_2x" />
+
+        <TextView
+            android:id="@+id/tv_streak"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_streak_count"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:text="Current Day Streak"
+            android:textAlignment="center"
+            android:textColor="#49e4c8" />
+
+
+        <TextView
+            android:id="@+id/tv_session_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_progress"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_medium_3"
+            android:text="1"
+            android:textAlignment="center"
+            android:textColor="#6520f9"
+            android:textSize="@dimen/text_heading_2x" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_session_count"
+            android:layout_centerHorizontal="true"
+            android:text="Total Sessions"
+            android:textAlignment="center"
+            android:textColor="#6520f9" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_progress"
+            android:layout_marginLeft="@dimen/margin_xxlarge"
+            android:layout_marginRight="@dimen/margin_xxlarge"
+            android:layout_marginTop="@dimen/margin_medium_3"
+            android:text="5"
+            android:textAlignment="center"
+            android:textColor="#faa346"
+            android:textSize="@dimen/text_heading_2x" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_session_count"
+            android:layout_marginRight="@dimen/margin_medium_2"
+            android:text="Total Minutes"
+            android:textAlignment="center"
+            android:textColor="#faa346" />
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_session_count"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginRight="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_xxxxlarge"
+            app:cardCornerRadius="@dimen/margin_card_medium"
+            android:id="@+id/cardView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#de6f83">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/textView"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginBottom="@dimen/margin_medium"
+                        android:layout_marginStart="16dp"
+                        android:paddingLeft="@dimen/margin_medium"
+                        android:src="@drawable/ic_local_florist_white_24dp" />
+
+                    <TextView
+                        android:id="@+id/tv_unlimited"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_xxxlarge"
+                        android:layout_marginTop="@dimen/margin_large"
+                        android:text="Get Unlimited Access"
+                        android:textColor="@color/white_full"
+                        android:textSize="@dimen/text_regular_2x"
+                        android:textStyle="bold"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_unlimited"
+                        android:layout_marginBottom="@dimen/margin_large"
+                        android:layout_marginLeft="@dimen/margin_xxxlarge"
+                        android:text="To the world's best teachers"
+                        android:textColor="@color/white_full"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="17dp"
+                        android:src="@drawable/ic_chevron_right_white_36dp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimaryDark"
+            app:itemIconTint="@color/secondary_text"
+            app:itemTextColor="@color/secondary_text"
+            app:menu="@menu/navigation_menu">
+
+        </android.support.design.widget.BottomNavigationView>
+    </RelativeLayout>
+
+</com.padcmyanmar.simplehabit.viewpod.Viewpod_Me>

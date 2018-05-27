@@ -12,6 +12,8 @@
     <dimen name="margin_xlarge">32dp</dimen>
     <dimen name="margin_xxlarge">48dp</dimen>
     <dimen name="margin_xxxlarge">56dp</dimen>
+    <dimen name="margin_xxxxlarge">62dp</dimen>
+
 
     <dimen name="margin_small_n">-4dp</dimen>
     <dimen name="margin_card_medium_n">-6dp</dimen>
