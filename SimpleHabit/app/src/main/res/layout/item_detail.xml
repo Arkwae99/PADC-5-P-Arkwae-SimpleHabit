@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/colorPrimaryDark">
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:text="1"
+        android:textColor="@color/white_full"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_title_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_medium_2"
+        android:layout_toRightOf="@id/tv_number"
+        android:text="Body awareness"
+        android:textColor="@color/white_full"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/detail_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/margin_large"
+        android:text="5 min"
+        android:textColor="@color/secondary_text"
+        android:textSize="18sp" />
+    <ImageView
+        android:id="@+id/divider_item"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:background="@color/divider"
+        />
+
+</RelativeLayout>

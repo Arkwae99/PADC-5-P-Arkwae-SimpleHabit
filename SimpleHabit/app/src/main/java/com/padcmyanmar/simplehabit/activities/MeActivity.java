@@ -9,8 +9,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.padcmyanmar.simplehabit.MainActivity;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.padcmyanmar.simplehabit.R;

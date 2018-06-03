@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/start_here_cv"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:contentScrim="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/tv_start_here_detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_xxxxxlarge"
+                    android:text="Simple Habit Starter"
+                    android:textColor="@color/white_full"
+                    android:textSize="@dimen/text_heading_1x" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_favourite_nutrition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="@dimen/margin_large"
+        android:src="@drawable/ic_play_arrow_white_24dp"
+        app:fabSize="mini"
+        app:layout_anchor="@+id/app_bar"
+        app:layout_anchorGravity="right|bottom" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/sv_news_details_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:src="@drawable/ic_favorite_border_white_24dp" />
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_type"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_toRightOf="@id/iv_type"
+                android:text="Awareness, Calm, Focus"
+                android:textColor="@color/white_full"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <ImageView
+                android:id="@+id/iv_player"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/iv_type"
+                android:layout_below="@id/iv_type"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:src="@drawable/ic_headset_white_24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_type"
+                android:layout_alignTop="@id/iv_player"
+                android:layout_below="@id/tv_type"
+                android:text="1,089,760 Plays"
+                android:textColor="@color/white_full"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <ImageView
+                android:id="@+id/divider_one"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/iv_player"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@color/divider" />
+
+            <TextView
+                android:id="@+id/tv_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/iv_player"
+                android:layout_below="@id/divider_one"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:lineSpacingMultiplier="1.1"
+                android:text="@string/about"
+                android:textColor="@color/white_full"
+                android:textSize="@dimen/text_regular_2x" />
+
+
+            <ImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignLeft="@id/tv_about"
+                android:layout_below="@+id/tv_about"
+                android:layout_marginTop="@dimen/margin_large"
+                android:scaleType="fitXY"
+                android:src="@drawable/axe" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/iv_profile"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_toRightOf="@id/iv_profile"
+                android:text=" by Cory Muscara"
+                android:textColor="@color/white_full"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/divider_two"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/iv_profile"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@color/divider" />
+
+            <TextView
+                android:id="@+id/tv_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/iv_profile"
+                android:layout_below="@+id/divider_two"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="Download"
+                android:textColor="@color/white_full"
+                android:textSize="18sp" />
+
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/tv_download"
+                android:layout_marginRight="@dimen/margin_medium_3" />
+
+            <ImageView
+                android:id="@+id/divider_three"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/tv_download"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@color/divider" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_item_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_three">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>

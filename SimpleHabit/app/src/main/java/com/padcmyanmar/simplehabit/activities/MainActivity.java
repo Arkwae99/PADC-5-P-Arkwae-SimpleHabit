@@ -1,4 +1,4 @@
-package com.padcmyanmar.simplehabit;
+package com.padcmyanmar.simplehabit.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,17 +7,17 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.padcmyanmar.simplehabit.activities.MeActivity;
+import com.padcmyanmar.simplehabit.R;
 import com.padcmyanmar.simplehabit.adapters.SeriesAdapter;
 import com.padcmyanmar.simplehabit.data.models.SimpleHabitsModel;
+import com.padcmyanmar.simplehabit.delegates.CategoryProgramDelegate;
+import com.padcmyanmar.simplehabit.delegates.CurrentProgramDelegate;
 import com.padcmyanmar.simplehabit.events.SimpleHabitEvents;
 import com.padcmyanmar.simplehabit.events.SuccessEvent;
 
@@ -28,7 +28,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CurrentProgramDelegate,CategoryProgramDelegate {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -38,14 +38,13 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
 
-    public static Intent meditateIntent(Context context)
-    {
-        Intent intent =new Intent(context,MainActivity.class);
+
+    public static Intent meditateIntent(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
         return intent;
     }
 
     private SeriesAdapter mSeriesAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +54,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ButterKnife.bind(this, this);
 
-        mSeriesAdapter = new SeriesAdapter(getApplicationContext());
+        SimpleHabitsModel.getInstance().startLoadingSimpleHabits();
+
+        mSeriesAdapter = new SeriesAdapter(getApplicationContext(), this,this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext()
                 , LinearLayoutManager.VERTICAL, false);
         rvList.setLayoutManager(linearLayoutManager);
         rvList.setAdapter(mSeriesAdapter);
-        SimpleHabitsModel.getInstance().startLoadingSimpleHabits();
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -129,5 +130,19 @@ public class MainActivity extends AppCompatActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onErrorInvokingAPI(SimpleHabitEvents.ErrorInvokingAPIEvent event) {
         Snackbar.make(rvList, event.getErrorMsg(), Snackbar.LENGTH_INDEFINITE).show();
+    }
+
+    @Override
+    public void onTapCurrentProgram() {
+        Intent intent = ItemDetailActivity.newIntentCurrentProgram(getApplicationContext());
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void onTapCategoryProgramDelegate(String categoryId, String categoryProgramId) {
+        Intent intent = ItemDetailActivity.newIntentCategoryProgram(getApplicationContext(),categoryId,categoryProgramId);
+        startActivity(intent);
+
     }
 }

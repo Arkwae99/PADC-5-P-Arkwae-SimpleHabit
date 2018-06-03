@@ -8,8 +8,9 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.padcmyanmar.simplehabit.R;
-import com.padcmyanmar.simplehabit.adapters.ItemInCategoryAdapter;
+import com.padcmyanmar.simplehabit.adapters.ProgramAdapter;
 import com.padcmyanmar.simplehabit.data.vo.CategoriesVO;
+import com.padcmyanmar.simplehabit.delegates.CategoryProgramDelegate;
 
 public class CategoryViewHolder extends BaseViewHolder<CategoriesVO> {
     @BindView(R.id.rv_category_items)
@@ -18,25 +19,28 @@ public class CategoryViewHolder extends BaseViewHolder<CategoriesVO> {
     @BindView(R.id.tv_category_title)
     TextView tvCategoryTitle;
 
+    private CategoryProgramDelegate mCategoryProgramDelegate;
+    private ProgramAdapter programAdapter;
 
-    ItemInCategoryAdapter itemInCategoryAdapter;
-    public CategoryViewHolder(View itemView) {
+    public CategoryViewHolder(View itemView , CategoryProgramDelegate delegate) {
         super(itemView);
 
         ButterKnife.bind(this,itemView);
+        mCategoryProgramDelegate = delegate;
 
-        itemInCategoryAdapter= new ItemInCategoryAdapter(itemView.getContext());
+        programAdapter = new ProgramAdapter(itemView.getContext(), mCategoryProgramDelegate);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(itemView.getContext()
                 ,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(itemInCategoryAdapter);
+        recyclerView.setAdapter(programAdapter);
 
     }
 
     @Override
     public void setData(CategoriesVO data) {
-        itemInCategoryAdapter.setNewData(data.getPrograms());
         tvCategoryTitle.setText(data.getTitle());
+        programAdapter.setNewData(data.getPrograms());
+        programAdapter.setCategory(data);
     }
 
 

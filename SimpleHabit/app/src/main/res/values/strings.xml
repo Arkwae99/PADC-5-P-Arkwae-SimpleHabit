@@ -2,4 +2,7 @@
     <string name="app_name">SimpleHabit</string>
     <string name="action_settings">Settings</string>
     <string name="starthere">Start Here</string>
+
+    <string name="about" >This is our signature 7 day introductory course to mindfulness meditation. In this series, you will learn the basic techniques of focus on the breath, the body and your senses so you can start meditation in a right way.</string>
+    <string name="about_one">Cory is a former monk and founder of the Long Island Center for Mindfulness. He teaches mindfulness at Columbia Teachers College, positive psychology at the University of Pennsylvania, and regularly appears on the Dr. Oz show as a guest expert on mindfulness.</string>
 </resources>
