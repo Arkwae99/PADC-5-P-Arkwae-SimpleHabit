@@ -1,12 +1,15 @@
 package com.padcmyanmar.simplehabit.data.vo;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by eidoshack on 5/23/18.
  */
-
-public class SessionsVO  {
+public class SessionsVO {
 
     @SerializedName("session-id")
     private String sessionId;

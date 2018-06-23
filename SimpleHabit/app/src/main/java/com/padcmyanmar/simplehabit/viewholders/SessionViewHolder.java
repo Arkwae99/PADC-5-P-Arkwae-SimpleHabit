@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
  * Created by Ag Phone Khant on 2/6/2018.
  */
 
-public class SessionViewHolder extends BaseViewHolder<SessionsVO>  {
+public class SessionViewHolder extends BaseViewHolder<SessionsVO> {
 
     @BindView(R.id.tv_number)
     TextView tvNumber;
@@ -35,7 +35,7 @@ public class SessionViewHolder extends BaseViewHolder<SessionsVO>  {
     public void setData(SessionsVO data) {
         tvNumber.setText(data.getSessionId());
         tvTitleName.setText(data.getTitle());
-        String timeLength = data.getLengthInSeconds()/60+":"+data.getLengthInSeconds()%60;
+        String timeLength = data.getLengthInSeconds() / 60 + ":" + data.getLengthInSeconds() % 60;
         tvDetailTime.setText(timeLength);
     }
 

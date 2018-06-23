@@ -1,5 +1,10 @@
 package com.padcmyanmar.simplehabit.data.vo;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -7,8 +12,8 @@ import java.util.List;
 /**
  * Created by eidoshack on 5/23/18.
  */
-
-public class CategoriesVO implements HomeScreenVO{
+@Entity(tableName = "Categories")
+public class CategoriesVO implements HomeScreenVO {
 
     @SerializedName("category-id")
     private String categoryId;

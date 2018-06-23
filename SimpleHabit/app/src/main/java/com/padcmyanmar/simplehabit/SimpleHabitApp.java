@@ -18,7 +18,6 @@ public class SimpleHabitApp extends Application {
     public static final String CATEGORY_PROGRAM_ID = "categoryProgramId";
 
 
-
     @Override
     public void onCreate() {
         super.onCreate();

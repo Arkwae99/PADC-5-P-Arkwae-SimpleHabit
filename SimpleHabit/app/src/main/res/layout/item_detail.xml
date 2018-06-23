@@ -35,13 +35,13 @@
         android:text="5 min"
         android:textColor="@color/secondary_text"
         android:textSize="18sp" />
+
     <ImageView
         android:id="@+id/divider_item"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/margin_medium"
-        android:background="@color/divider"
-        />
+        android:background="@color/divider" />
 
 </RelativeLayout>

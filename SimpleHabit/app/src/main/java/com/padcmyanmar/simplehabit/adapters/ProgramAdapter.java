@@ -16,9 +16,10 @@ public class ProgramAdapter extends BaseRecyclerAdapter<ProgramViewHolder, Progr
     private CategoryProgramDelegate mCategoryProgramDelegate;
 
     private CategoriesVO mRootCategory;
+
     public ProgramAdapter(Context context, CategoryProgramDelegate delegate) {
         super(context);
-        mCategoryProgramDelegate =delegate;
+        mCategoryProgramDelegate = delegate;
     }
 
     @NonNull

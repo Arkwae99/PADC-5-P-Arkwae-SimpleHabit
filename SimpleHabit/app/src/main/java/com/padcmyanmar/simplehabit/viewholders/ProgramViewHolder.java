@@ -41,7 +41,7 @@ public class ProgramViewHolder extends BaseViewHolder<ProgramsVO> {
 
     }
 
-    public void setCategory(CategoriesVO category){
+    public void setCategory(CategoriesVO category) {
         mCategoryVO = category;
     }
 
@@ -49,6 +49,6 @@ public class ProgramViewHolder extends BaseViewHolder<ProgramsVO> {
 
     @Override
     public void onClick(View v) {
-        mCategoryProgramDelegate.onTapCategoryProgramDelegate(mCategoryVO.getCategoryId(),mProgram.getProgramId());
+        mCategoryProgramDelegate.onTapCategoryProgramDelegate(mCategoryVO.getCategoryId(), mProgram.getProgramId());
     }
 }

@@ -1,5 +1,9 @@
 package com.padcmyanmar.simplehabit.data.models;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.ViewModel;
+import android.content.Context;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -7,11 +11,11 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.padcmyanmar.simplehabit.data.vo.CategoriesVO;
 import com.padcmyanmar.simplehabit.data.vo.CurrentProgramsVO;
 import com.padcmyanmar.simplehabit.data.vo.HomeScreenVO;
 import com.padcmyanmar.simplehabit.data.vo.ProgramsVO;
-import com.padcmyanmar.simplehabit.data.vo.TopicsVO;
 import com.padcmyanmar.simplehabit.events.SimpleHabitEvents;
 import com.padcmyanmar.simplehabit.events.SuccessEvent;
 import com.padcmyanmar.simplehabit.network.SimpleHabitsRetrofitDataAgent;
@@ -21,11 +25,11 @@ import com.padcmyanmar.simplehabit.utils.AppConstants;
  * Created by eidoshack on 5/23/18.
  */
 
-public class SimpleHabitsModel {
+public class SimpleHabitsModel  {
 
     private static SimpleHabitsModel objInstance;
 
-    private List<HomeScreenVO> seriesData;
+    public static List<HomeScreenVO> seriesData;
     private int mmPageIndex = 1;
 
     private SimpleHabitsModel() {
@@ -35,7 +39,7 @@ public class SimpleHabitsModel {
     }
 
     public static SimpleHabitsModel getInstance() {
-        if(objInstance == null) {
+        if (objInstance == null) {
             objInstance = new SimpleHabitsModel();
         }
         return objInstance;
@@ -45,20 +49,20 @@ public class SimpleHabitsModel {
         return seriesData;
     }
 
-    public CurrentProgramsVO getCurrentProgram(){
-        for(HomeScreenVO obj:seriesData){
-            if(obj instanceof CurrentProgramsVO)
-                return (CurrentProgramsVO)obj;
+    public CurrentProgramsVO getCurrentProgram() {
+        for (HomeScreenVO obj : seriesData) {
+            if (obj instanceof CurrentProgramsVO)
+                return (CurrentProgramsVO) obj;
         }
         return null;
     }
 
-    public ProgramsVO getProgram(String categoryId, String categoryProgramId){
-        for(int i=0; i<seriesData.size(); i++){
-            if(seriesData.get(i) instanceof CategoriesVO){
-                if(((CategoriesVO) seriesData.get(i)).getCategoryId().equals(categoryId)){
-                    for(int j = 0; j < ((CategoriesVO) seriesData.get(i)).getPrograms().size(); j++){
-                        if(((CategoriesVO) seriesData.get(i)).getPrograms().get(j).getProgramId().equals(categoryProgramId)){
+    public ProgramsVO getProgram(String categoryId, String categoryProgramId) {
+        for (int i = 0; i < seriesData.size(); i++) {
+            if (seriesData.get(i) instanceof CategoriesVO) {
+                if (((CategoriesVO) seriesData.get(i)).getCategoryId().equals(categoryId)) {
+                    for (int j = 0; j < ((CategoriesVO) seriesData.get(i)).getPrograms().size(); j++) {
+                        if (((CategoriesVO) seriesData.get(i)).getPrograms().get(j).getProgramId().equals(categoryProgramId)) {
                             return ((CategoriesVO) seriesData.get(i)).getPrograms().get(j);
                         }
                     }
@@ -90,7 +94,6 @@ public class SimpleHabitsModel {
         SuccessEvent dataReadyEvent = new SuccessEvent(seriesData);
         EventBus.getDefault().post(dataReadyEvent);
     }
-
 
 
 }

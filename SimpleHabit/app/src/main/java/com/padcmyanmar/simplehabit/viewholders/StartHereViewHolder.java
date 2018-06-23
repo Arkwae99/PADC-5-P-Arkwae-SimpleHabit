@@ -31,7 +31,7 @@ public class StartHereViewHolder extends BaseViewHolder<CurrentProgramsVO> {
 
     private CurrentProgramDelegate mCurrentProgramDelegate;
 
-    public StartHereViewHolder(View itemView,CurrentProgramDelegate delegate) {
+    public StartHereViewHolder(View itemView, CurrentProgramDelegate delegate) {
         super(itemView);
         ButterKnife.bind(this, itemView);
 
@@ -43,8 +43,6 @@ public class StartHereViewHolder extends BaseViewHolder<CurrentProgramsVO> {
     public void setData(CurrentProgramsVO data) {
         mCurrentProgramVO = data;
         tvStartHere.setText(data.getTitle());
-        int[] averageLength = data.getAverageLength();
-        tvTimeStartHere.setText(averageLength[0]+" mins");
         btnStart.setText(data.getCurrentPeriod());
 
     }

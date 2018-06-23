@@ -1,9 +1,13 @@
 package com.padcmyanmar.simplehabit.activities;
 
+import android.app.AlertDialog;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,19 +20,29 @@ import android.view.MenuItem;
 import com.padcmyanmar.simplehabit.R;
 import com.padcmyanmar.simplehabit.adapters.SeriesAdapter;
 import com.padcmyanmar.simplehabit.data.models.SimpleHabitsModel;
+import com.padcmyanmar.simplehabit.data.vo.CategoriesVO;
+import com.padcmyanmar.simplehabit.data.vo.CurrentProgramsVO;
+import com.padcmyanmar.simplehabit.data.vo.HomeScreenVO;
+import com.padcmyanmar.simplehabit.data.vo.TopicsVO;
 import com.padcmyanmar.simplehabit.delegates.CategoryProgramDelegate;
 import com.padcmyanmar.simplehabit.delegates.CurrentProgramDelegate;
 import com.padcmyanmar.simplehabit.events.SimpleHabitEvents;
 import com.padcmyanmar.simplehabit.events.SuccessEvent;
+import com.padcmyanmar.simplehabit.mvp.presenters.HomeScreenPresenter;
+import com.padcmyanmar.simplehabit.mvp.views.HomeScreenView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements CurrentProgramDelegate,CategoryProgramDelegate {
+import static java.security.AccessController.getContext;
+
+public class MainActivity extends AppCompatActivity implements HomeScreenView {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -38,13 +52,23 @@ public class MainActivity extends AppCompatActivity implements CurrentProgramDel
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
 
+    private SimpleHabitsModel simpleHabitsModel;
+    private SeriesAdapter mSeriesAdapter;
+    private HomeScreenPresenter mPresenter;
+
+    private CurrentProgramDelegate mCurrentProgramDelegate;
+
+    private CategoryProgramDelegate mCategoryProgramDelegate;
+
+
+
 
     public static Intent meditateIntent(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         return intent;
     }
 
-    private SeriesAdapter mSeriesAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +80,19 @@ public class MainActivity extends AppCompatActivity implements CurrentProgramDel
 
         SimpleHabitsModel.getInstance().startLoadingSimpleHabits();
 
-        mSeriesAdapter = new SeriesAdapter(getApplicationContext(), this,this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext()
-                , LinearLayoutManager.VERTICAL, false);
+
+        mPresenter = new HomeScreenPresenter(this);
+        mPresenter.onCreate();
+
+        mCurrentProgramDelegate = mPresenter;
+        mCategoryProgramDelegate = mPresenter;
+
+
+        mSeriesAdapter = new SeriesAdapter(getApplicationContext(),mCurrentProgramDelegate,mCategoryProgramDelegate);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
         rvList.setLayoutManager(linearLayoutManager);
         rvList.setAdapter(mSeriesAdapter);
+
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -132,17 +164,26 @@ public class MainActivity extends AppCompatActivity implements CurrentProgramDel
         Snackbar.make(rvList, event.getErrorMsg(), Snackbar.LENGTH_INDEFINITE).show();
     }
 
-    @Override
-    public void onTapCurrentProgram() {
-        Intent intent = ItemDetailActivity.newIntentCurrentProgram(getApplicationContext());
-        startActivity(intent);
 
+    @Override
+    public void displayHomeScreen(List<HomeScreenVO> list) {
+        mSeriesAdapter.setNewData(list);
     }
 
     @Override
-    public void onTapCategoryProgramDelegate(String categoryId, String categoryProgramId) {
+    public void lunchDetail() {
+        Intent intent = ItemDetailActivity.newIntentCurrentProgram(getApplicationContext());
+        startActivity(intent);
+    }
+
+    @Override
+    public void lunchDetail(String categoryId, String categoryProgramId) {
         Intent intent = ItemDetailActivity.newIntentCategoryProgram(getApplicationContext(),categoryId,categoryProgramId);
         startActivity(intent);
+    }
 
+    @Override
+    public void dispalyErrorMessage(String errorMsg) {
+        Snackbar.make(rvList, errorMsg, Snackbar.LENGTH_INDEFINITE).show();
     }
 }

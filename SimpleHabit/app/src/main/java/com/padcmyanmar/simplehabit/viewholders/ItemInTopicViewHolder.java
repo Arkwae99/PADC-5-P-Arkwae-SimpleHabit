@@ -26,7 +26,6 @@ public class ItemInTopicViewHolder extends BaseViewHolder<TopicsVO> {
     ImageView ivTopic;
 
 
-
     public ItemInTopicViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
@@ -55,7 +54,6 @@ public class ItemInTopicViewHolder extends BaseViewHolder<TopicsVO> {
 //            ivTopic.setVisibility(View.GONE);
 //        }
     }
-
 
 
     @Override

@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 import com.padcmyanmar.simplehabit.R;
 import com.padcmyanmar.simplehabit.adapters.ProgramAdapter;
 import com.padcmyanmar.simplehabit.data.vo.CategoriesVO;
@@ -22,15 +23,15 @@ public class CategoryViewHolder extends BaseViewHolder<CategoriesVO> {
     private CategoryProgramDelegate mCategoryProgramDelegate;
     private ProgramAdapter programAdapter;
 
-    public CategoryViewHolder(View itemView , CategoryProgramDelegate delegate) {
+    public CategoryViewHolder(View itemView, CategoryProgramDelegate delegate) {
         super(itemView);
 
-        ButterKnife.bind(this,itemView);
+        ButterKnife.bind(this, itemView);
         mCategoryProgramDelegate = delegate;
 
         programAdapter = new ProgramAdapter(itemView.getContext(), mCategoryProgramDelegate);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(itemView.getContext()
-                ,LinearLayoutManager.HORIZONTAL,false);
+                , LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(programAdapter);
 

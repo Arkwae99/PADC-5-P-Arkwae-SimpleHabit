@@ -14,7 +14,7 @@ import com.padcmyanmar.simplehabit.viewholders.SessionViewHolder;
  * Created by Ag Phone Khant on 2/6/2018.
  */
 
-public class SessionAdapter extends BaseRecyclerAdapter<SessionViewHolder,SessionsVO> {
+public class SessionAdapter extends BaseRecyclerAdapter<SessionViewHolder, SessionsVO> {
 
     public SessionAdapter(Context context) {
         super(context);

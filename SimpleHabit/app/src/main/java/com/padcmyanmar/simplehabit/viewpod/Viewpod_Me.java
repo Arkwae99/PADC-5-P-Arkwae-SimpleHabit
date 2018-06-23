@@ -25,10 +25,9 @@ public class Viewpod_Me extends RelativeLayout {
     }
 
 
-
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.bind(this,this);
+        ButterKnife.bind(this, this);
     }
 }
